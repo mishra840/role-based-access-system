@@ -1,39 +1,4 @@
-// const jwt = require('jsonwebtoken');
-// const db = require('../config/db');
-// const { verifyToken } = require('../controllers/authController');
 
-
-
-// exports.verifyToken = (req, res) => {
-//     const authHeader = req.headers['authorization'];
-//     console.log('verify')
-//     if (!authHeader) return res.status(401).json({ error: 'No token provided' });
-
-//     const token = authHeader.split(' ')[1];
-//     if (!token) return res.status(401).json({ error: 'No token provided' });
-
-//     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-//         if (err) return res.status(401).json({ error: 'Invalid token' });
-
-//         const userId = decoded.id;
-//         console.log(userId)
-
-//         db.query('SELECT id, name,role_id FROM users WHERE id = ?', [userId], (err, results) => {
-//             if (err) return res.status(500).json({ error: 'Database error' });
-//             if (results.length === 0) return res.status(404).json({ error: 'User not found' });
-
-//             const user = results[0];
-//             // ✅ This is the key fix:
-//             return res.status(200).json({
-//                 message: 'Token is valid',
-//                 user: user  // <--- Include user info here
-//             });
-//         });
-//     });
-// };
-
-
-// module.exports = verifyToken;
 const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
 
