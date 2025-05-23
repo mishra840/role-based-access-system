@@ -7,33 +7,6 @@ const generateToken = (user) => {
     return jwt.sign({ id: user.id, role_id: user.role_id }, process.env.JWT_SECRET, { expiresIn: 'id' })
 }
 
-// exports.register = (req, res) => {
-//     const { name, email, password, role_id, enterprise_id } = req.body
-//     // Hash password
-//     const hashedPassword = bcrypt.hashSync(password, 10);
-
-
-//     console.log(hashedPassword)
-//     //Insert user into DB
-
-//     db.query('INSERT INTO users (name, email, password, role_id, enterprise_id) VALUES (?,?,?,?,?)', [name, email, hashedPassword, role_id, enterprise_id],
-
-//         (err, result) => {
-//             if (err) {
-//                 if (err.code === 'ER_DUP_ENTRY') {
-//                     return res.status(400).json({ message: 'Email already registered' });
-//                 }
-//                 return res.status(500).json({ error: err.message });
-//             }
-//             res.json({ message: 'User registered successfully' });
-
-
-//         }
-
-//     )
-
-// }
-
 exports.register = (req, res) => {
     let { name, email, password, role_id, enterprise_id } = req.body;
 
